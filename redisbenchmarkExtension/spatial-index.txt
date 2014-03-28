@@ -1,0 +1,23 @@
+1. 写入空间数据
+   格式 GEOADD key MERCATOR|WGS84 x y value  [attr_name attr_value ...]
+   例如： GEOADD  allpoi  MERCATOR  10000.1 10000.1  poi0  name hello
+  
+2. 空间索引查询
+   格式 GEOSEARCH key MERCATOR|WGS84 x y  <GeoOptions>  
+        <GeoOptions> = RADIUS r     [ASC|DESC]   [WITHCOORDINATES] [WITHDISTANCES]  [GET pattern [GET pattern ...]] [LIMIT offset count]
+                       半径单位米   按距离排序   返回结果带坐标    返回结果带距离   类似redis sort命令的join机制    分页机制
+   例如：GEOSEARCH allpoi MERCATOR 10000.1 10000.1  RADIUS 3000 WITHCOORDINATES  WITHDISTANCES                              
+   
+3. cache加载
+   将空间索引数据加载到内存中
+   例如： cache load allpoi  
+      
+4. cache卸载
+   将空间索引数据从内存中卸载
+   例如： cache evict allpoi 
+
+5. cache状态
+   查看cache状态
+   例如： cache status allpoi 
+   
+  
