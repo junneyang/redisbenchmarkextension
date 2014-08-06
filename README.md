@@ -1,2 +1,2 @@
-redisbenchmarkExtension
+redisbenchmarkextension
 =======================
